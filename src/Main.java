@@ -7,8 +7,41 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
         StudentManager manager = new StudentManager();
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for the number of students to manage
+        System.out.print("Enter the number of students to manage: ");
+        int numStudents = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        for (int i = 0; i < numStudents; i++) {
+            System.out.println("Enter details for student " + (i + 1) + ":");
+            System.out.print("ID: ");
+            String id = scanner.nextLine();
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Marks: ");
+            double marks = scanner.nextDouble();
+            scanner.nextLine(); // Consume newline
+
+            manager.addStudent(new Student(id, name, marks));
+        }
+
+        // Display all students after input
+        System.out.println("\nList of students:");
+        manager.displayAllStudents();
+
+
+
+        manager.addStudent(new Student("BD00283", "Vo Van Thanh Binh", 9.5));
+        manager.addStudent(new Student("BD00234", "Nguyen Minh Thu", 9.0));
+        manager.addStudent(new Student("BD00129", "Le Tien Quan", 5.4));
+        manager.addStudent(new Student("BD00291", "Truong Van Khoa", 9.8));
+        manager.addStudent(new Student("BD00523", "Tran Duc Tien", 6.8));
+        manager.addStudent(new Student("BD00444", "Taylor Swift", 7.5));
+
 
         while (true) {
             System.out.println("\nStudent Management System:");
@@ -89,3 +122,49 @@ public class Main {
         }
     }
 }
+
+
+//        StudentManager manager = new StudentManager();
+
+//        // Test case: Adding students
+//        manager.addStudent(new Student("BD00283", "Vo Van Thanh Binh", 8));
+//        manager.addStudent(new Student("BD00200", "Le Ha Canh Thuan", 7.0));
+//        manager.addStudent(new Student("BD00123", "Nguyen Minh Thu", 9.2));
+//        manager.addStudent(new Student("BD00666", "Le Tien Quan", 5.4));
+//        manager.addStudent(new Student("BD00523", "Tran Duc Tien", 6.8));
+//
+//        System.out.println("SE06101 list of students:");
+//        manager.displayAllStudents();
+//
+//        // Test case: Editing a student's information
+//        manager.editStudent("BD00283", "Vo Van Thanh Binh", 9.5);
+//        System.out.println("\nAfter editing Binh's information:");
+//        manager.displayAllStudents();
+//
+//        // Test case: Deleting a student
+//        manager.deleteStudent("BD00666");
+//        System.out.println("\nAfter deleting Quan:");
+//        manager.displayAllStudents();
+//
+//        // Test case: Sorting students by marks
+//        manager.sortStudentsByMarks();
+//        System.out.println("\nAfter sorting by marks:");
+//        manager.displayAllStudents();
+//
+//        // Test case: Searching for a student by ID
+//        Student student = manager.searchStudentById("BD00283");
+//        System.out.println("\nSearching for student with ID BD00283:");
+//        if (student != null) {
+//            System.out.println(student);
+//        } else {
+//            System.out.println("Student not found.");
+//        }
+//
+//        // Test case: Searching for students by name
+//        System.out.println("\nSearching for students with name containing 'Binh':");
+//        List<Student> studentsByName = manager.searchStudentByName("Bin");
+//        for (Student s : studentsByName) {
+//            System.out.println(s);
+//        }
+//    }
+//    }
